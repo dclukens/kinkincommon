@@ -1,0 +1,19 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>kinkincommon</title>
+<h1>kinkincommon</h1>
+<button id="test">Run match test</button>
+<pre id="out"></pre>
+<script>
+document.getElementById('test').onclick = async () => {
+  const r = await fetch('/.netlify/functions/match',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({
+      answersA:['bananas','Yes Chocolate'],
+      answersB:['BANANAS','yes chocolate']
+    })
+  });
+  document.getElementById('out').textContent = await r.text();
+};
+</script>
